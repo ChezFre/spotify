@@ -26,6 +26,7 @@ function App() {
   const renderApp = useCallback(() => {
     if (!query) return <div>Initial state</div>;
     if (loading) return <div>Loading</div>;
+    if (error) return <div>Error {error.message}</div>;
     if (selectedArtist)
       return (
         <ArtistDetail
