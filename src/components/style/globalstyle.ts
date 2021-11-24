@@ -80,8 +80,10 @@ const GlobalStyle = createGlobalStyle<{ fatalError?: boolean }>`
         ${({ fatalError }) =>
           !fatalError
             ? css`
-                grid-template-rows: min-content 1fr;
-                gap: var(--spacing-10);
+                grid-template-rows: 1fr min-content;
+                @media (min-width: 530px) {
+                  grid-template-rows: min-content 1fr;
+                }
               `
             : undefined}
     }
