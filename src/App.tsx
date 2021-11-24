@@ -1,9 +1,12 @@
+import { useState } from "react";
 import Layout from "./components/layout/Layout";
 
 function App() {
+  const [query, setQuery] = useState("");
+
   return (
-    <Layout onBackClick={() => {}} handleSearch={() => {}}>
-      Place content here
+    <Layout onBackClick={console.log} handleSearch={setQuery}>
+      {query}
     </Layout>
   );
 }

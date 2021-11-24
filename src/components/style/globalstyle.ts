@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     :root {
         --spotify-black: 25, 20, 20;
         --spotify-brand: 29, 185, 84;
-        --spotify-white: 255 255 255;
+        --spotify-white: 255, 255, 255;
 
         --text-color: rgb(var(--spotify-white));
         --body-bg: rgb(var(--spotify-black));
