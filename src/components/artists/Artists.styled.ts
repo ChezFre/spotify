@@ -6,6 +6,7 @@ export const Artists = styled.ul`
   padding: 0;
   display: grid;
   margin: auto;
+  list-style: none;
   animation: ${slideUp} 0.1s ease-out both;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: var(--spacing-6);
