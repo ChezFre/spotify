@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Record from "../record/Record";
 import * as styled from "./ArtistDetail.styled";
 
 type TProps = {
@@ -15,7 +16,7 @@ const ArtistDetail: FC<TProps> = ({ name, image, albums }) => (
       <ul>
         {albums.map(({ name, image }, index) => (
           <li key={`${name}_${index}`}>
-            {name} {image}
+            <Record cover={image} name={name} key={name} />
           </li>
         ))}
       </ul>
