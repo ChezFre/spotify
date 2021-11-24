@@ -34,7 +34,7 @@ const Artist: FC<TProps> = ({
         />
       </styled.ImageContainer>
       <styled.Name as={onClick ? undefined : "h1"}>{name}</styled.Name>
-      <styled.AlbumCount>
+      <styled.AlbumCount data-testid="albumcount">
         {albumCount} {albumCount === 1 ? "album" : "albums"}
       </styled.AlbumCount>
     </>

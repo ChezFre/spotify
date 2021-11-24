@@ -36,7 +36,7 @@ const Feedback: FC<TProps> = ({
   message,
   className,
 }) => {
-  const [icon, setIcon] = React.useState<any>();
+  const [icon, setIcon] = React.useState<React.ReactNode>();
   const mounted = useRef(true);
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const Feedback: FC<TProps> = ({
 
   useEffect(() => {
     async function fetchIcon() {
-      const logo = await getType(type);
-      if (mounted.current) setIcon(logo);
+      const svg = await getType(type);
+      if (mounted.current) setIcon(svg);
     }
     fetchIcon();
   }, [type]);
