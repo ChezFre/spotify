@@ -5,12 +5,12 @@ const GlobalStyle = createGlobalStyle`
     ${normalize}
     
     :root {
-        --spotify-black: #191414;
-        --spotify-brand: #1db954;
-        --spotify-white: #ffffff;
+        --spotify-black: 25, 20, 20;
+        --spotify-brand: 29, 185, 84;
+        --spotify-white: 255 255 255;
 
-        --text-color: var(--spotify-white);
-        --body-bg: var(--spotify-black);
+        --text-color: rgb(var(--spotify-white));
+        --body-bg: rgb(var(--spotify-black));
 
         --z-index-1: 10;
         --z-index-2: 20;
@@ -76,6 +76,9 @@ const GlobalStyle = createGlobalStyle`
 
     #root {
         min-height: 100vh;
+        display: grid;
+        grid-template-rows: min-content 1fr;
+        gap: var(--spacing-10);
     }
 `;
 
