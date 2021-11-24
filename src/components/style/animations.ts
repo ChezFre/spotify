@@ -12,3 +12,10 @@ export const fadeIn = keyframes`
     opacity: 0;
   }
 `;
+
+export const slideInLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: scale3d(.95, .95, .95)
+  }
+`;
