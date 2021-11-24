@@ -5,6 +5,7 @@ import { TArtist } from "./types/artist";
 import Layout from "./components/layout/Layout";
 import Artists from "./components/artists/Artists";
 import ArtistDetail from "./components/artist/ArtistDetail";
+import Initial from "./components/states/initial/Initial";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -24,7 +25,7 @@ function App() {
   }, [query, loadArtists]);
 
   const renderApp = useCallback(() => {
-    if (!query) return <div>Initial state</div>;
+    if (!query) return <Initial />;
     if (loading) return <div>Loading</div>;
     if (error) return <div>Error {error.message}</div>;
     if (selectedArtist)
