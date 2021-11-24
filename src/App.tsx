@@ -1,11 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { useLazyQuery } from "@apollo/client";
 import QUERY_ARTISTS from "./queries/artists";
 import { TArtist } from "./types/artist";
 import Layout from "./components/layout/Layout";
 import Artists from "./components/artists/Artists";
-import ArtistDetail from "./components/artist/ArtistDetail";
 import Initial from "./components/states/initial/Initial";
+import Loading from "./components/states/loading/Loading";
+import Error from "./components/states/error/Error";
+import NoResults from "./components/states/no-results/NoResults";
+const ArtistDetail = lazy(() => import("./components/artist/ArtistDetail"));
 
 function App() {
   const [query, setQuery] = useState("");
@@ -26,8 +29,8 @@ function App() {
 
   const renderApp = useCallback(() => {
     if (!query) return <Initial />;
-    if (loading) return <div>Loading</div>;
-    if (error) return <div>Error {error.message}</div>;
+    if (loading) return <Loading />;
+    if (error) return <Error message={error.message} />;
     if (selectedArtist)
       return (
         <ArtistDetail
@@ -45,7 +48,7 @@ function App() {
         />
       );
 
-    return <div>No results</div>;
+    return <NoResults query={query} />;
   }, [query, loading, error, selectedArtist, data?.queryArtists]);
 
   return (
@@ -54,7 +57,7 @@ function App() {
       backEnabled={!!selectedArtist}
       handleSearch={setQuery}
     >
-      {renderApp()}
+      <Suspense fallback={<div />}>{renderApp()}</Suspense>
     </Layout>
   );
 }

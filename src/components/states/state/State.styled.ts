@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { slideUp } from "../../style/animations";
+import { TStateType } from "./types";
 
 const rotate = keyframes`
   20% {
@@ -41,13 +42,14 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.div<{ type: TStateType }>`
   position: relative;
   display: inline-block;
 
   &::before,
   &::after {
-    content: "";
+    content: ${({ type }) =>
+      type === "initial" || type === "loading" ? "''" : undefined};
     background-color: rgb(var(--spotify-brand));
     position: absolute;
     top: 0;
@@ -60,7 +62,7 @@ export const Icon = styled.div`
     width: 85%;
     height: 85%;
     mix-blend-mode: lighten;
-    margin: var(--spacing-1) auto 0;
+    margin: 5px auto 0;
     animation: ${rotate} 8s infinite linear;
     filter: blur(6px);
   }
@@ -73,7 +75,10 @@ export const Icon = styled.div`
   }
 
   svg {
-    color: rgb(var(--spotify-black));
+    color: ${({ type }) =>
+      type === "initial" || type === "loading"
+        ? `rgb(var(--spotify-black))`
+        : `rgb(var(--spotify-brand))`};
     border-radius: 50%;
     width: 100px;
     height: 100px;
