@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import { normalize } from "styled-normalize";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ fatalError?: boolean }>`
     ${normalize}
     
     :root {
@@ -77,8 +77,13 @@ const GlobalStyle = createGlobalStyle`
     #root {
         min-height: 100vh;
         display: grid;
-        grid-template-rows: min-content 1fr;
-        gap: var(--spacing-10);
+        ${({ fatalError }) =>
+          !fatalError
+            ? css`
+                grid-template-rows: min-content 1fr;
+                gap: var(--spacing-10);
+              `
+            : undefined}
     }
 `;
 
