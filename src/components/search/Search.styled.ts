@@ -14,7 +14,7 @@ export const Submit = styled.button`
   top: 0;
   bottom: 0;
   margin: auto;
-  color: var(--spotify-white);
+  color: var(--text-color);
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -28,7 +28,7 @@ export const SearchBar = styled.input`
   appearance: none;
   -webkit-appearance: none;
   font-family: inherit;
-  color: var(--spotify-white);
+  color: var(--text-color);
   height: var(--spacing-11);
   width: var(--spacing-11);
   outline: none;
