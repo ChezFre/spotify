@@ -3,9 +3,11 @@ import { useLazyQuery } from "@apollo/client";
 import QUERY_ARTISTS from "./queries/artists";
 import { TArtist } from "./types/artist";
 import Layout from "./components/layout/Layout";
+import Artists from "./components/artists/Artists";
 
 function App() {
   const [query, setQuery] = useState("");
+  const [selectedArtist, setSelectedArtist] = useState<TArtist | void>();
   const [loadArtists, { loading, data, error }] = useLazyQuery<{
     queryArtists: TArtist[];
   }>(QUERY_ARTISTS, {
@@ -24,15 +26,25 @@ function App() {
     if (!query) return <div>Initial state</div>;
     if (loading) return <div>Loading</div>;
     if (error) return <div>Error {error.message}</div>;
+    if (selectedArtist) return <div>{selectedArtist.name}</div>;
 
     if (data?.queryArtists.length)
-      return JSON.stringify(data?.queryArtists, null, 2);
+      return (
+        <Artists
+          artists={data?.queryArtists}
+          selectArtist={setSelectedArtist}
+        />
+      );
 
     return <div>No results</div>;
-  }, [error, loading, query, data]);
+  }, [query, loading, error, selectedArtist, data?.queryArtists]);
 
   return (
-    <Layout onBackClick={console.log} handleSearch={setQuery}>
+    <Layout
+      onBackClick={() => setSelectedArtist()}
+      backEnabled={!!selectedArtist}
+      handleSearch={setQuery}
+    >
       {renderApp()}
     </Layout>
   );
