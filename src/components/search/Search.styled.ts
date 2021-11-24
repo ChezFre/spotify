@@ -35,6 +35,13 @@ export const SearchBar = styled.input`
   transition: 0.25s ease-out;
   will-change: width;
   padding: var(--spacing-2) var(--spacing-5);
+  background-color: rgba(var(--spotify-white), 0.1);
+  width: 100%;
+
+  @media (min-width: 530px) {
+    width: var(--spacing-11);
+    background-color: transparent;
+  }
 
   &:hover {
     background-color: rgba(var(--spotify-white), 0.1);

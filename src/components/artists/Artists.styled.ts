@@ -7,12 +7,15 @@ export const Artists = styled.ul`
   display: grid;
   margin: auto;
   animation: ${slideUp} 0.1s ease-out both;
-  gap: var(--spacing-8);
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-6);
+
+  @media (min-width: 920px) {
+    gap: var(--spacing-8);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
 
   li {
-    display: flex;
     width: 100%;
   }
 `;
