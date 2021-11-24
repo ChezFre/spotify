@@ -24,7 +24,7 @@ export const BackButton = styled.button`
     &:hover,
     &:focus {
       cursor: pointer;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(var(--spotify-white), 0.1);
     }
   }
 
