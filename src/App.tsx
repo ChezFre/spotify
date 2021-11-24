@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import { useLazyQuery } from "@apollo/client";
+import { useDocumentTitle } from "@mantine/hooks";
 import QUERY_ARTISTS from "./queries/artists";
 import { TArtist } from "./types/artist";
 import Layout from "./components/layout/Layout";
@@ -20,6 +21,14 @@ function App() {
       query,
     },
   });
+
+  useDocumentTitle(
+    `${
+      selectedArtist
+        ? `${selectedArtist.name} | Artist`
+        : `${query ? `${query} | Overview` : "Overview"}`
+    } | Spotify`
+  );
 
   useEffect(() => {
     if (query) {
