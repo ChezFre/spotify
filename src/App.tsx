@@ -4,6 +4,7 @@ import QUERY_ARTISTS from "./queries/artists";
 import { TArtist } from "./types/artist";
 import Layout from "./components/layout/Layout";
 import Artists from "./components/artists/Artists";
+import ArtistDetail from "./components/artist/ArtistDetail";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -26,7 +27,14 @@ function App() {
     if (!query) return <div>Initial state</div>;
     if (loading) return <div>Loading</div>;
     if (error) return <div>Error {error.message}</div>;
-    if (selectedArtist) return <div>{selectedArtist.name}</div>;
+    if (selectedArtist)
+      return (
+        <ArtistDetail
+          name={selectedArtist.name}
+          image={selectedArtist.image}
+          albums={selectedArtist.albums}
+        />
+      );
 
     if (data?.queryArtists.length)
       return (
