@@ -2,6 +2,7 @@
   "name": "spotify-cra",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/spotify",
   "dependencies": {
     "@apollo/client": "^3.5.5",
     "@mantine/hooks": "^3.2.2",
