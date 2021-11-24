@@ -67,9 +67,9 @@ export const Cover = styled.div<{ loaded: boolean }>`
   &::after {
     background-image: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(255, 255, 255, 0.05) 50%,
-      rgba(255, 255, 255, 0)
+      rgba(var(--spotify-white), 0) 50%,
+      rgba(var(--spotify-white), 0.05) 50%,
+      rgba(var(--spotify-white), 0)
     );
     top: 0;
     left: 0;
@@ -84,14 +84,18 @@ export const Cover = styled.div<{ loaded: boolean }>`
       left: 2%;
       right: 2%;
       bottom: 2%;
-      background-color: #000;
+      background-color: rgb(var(--spotify-black));
       background: linear-gradient(
             30deg,
             transparent 40%,
             rgba(42, 41, 40, 0.85) 40%
           )
           no-repeat 100% 0,
-        linear-gradient(60deg, rgba(42, 41, 40, 0.85) 60%, transparent 60%)
+        linear-gradient(
+            60deg,
+            rgba(42, 41, 40, 0.85) 60%,
+            rgba(42, 41, 40, 0) 60%
+          )
           no-repeat 0 100%,
         repeating-radial-gradient(
           #2a2928,
