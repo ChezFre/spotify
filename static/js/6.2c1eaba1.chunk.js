@@ -1,2 +1,0 @@
-(this["webpackJsonpspotify-cra"]=this["webpackJsonpspotify-cra"]||[]).push([[6],{91:function(e,t,a){"use strict";a.r(t);var c=a(24),s=a(3);t.default=function(){return Object(s.jsx)(c.a,{title:"A fatal error has occured",message:"An unrecoverable configuration mismatch has been detected. Please check back later."})}}}]);
-//# sourceMappingURL=6.2c1eaba1.chunk.js.map
