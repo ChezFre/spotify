@@ -20,5 +20,8 @@ export const Artist = styled(BaseArtist)`
   animation: ${slideInLeft} 0.25s ease-out both;
   @media (min-width: 600px) {
     margin-top: 67px;
+    position: sticky;
+    top: 110px;
+    align-self: flex-start;
   }
 `;
