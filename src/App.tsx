@@ -9,18 +9,21 @@ import Initial from "./components/states/initial/Initial";
 import Loading from "./components/states/loading/Loading";
 import Error from "./components/states/error/Error";
 import NoResults from "./components/states/no-results/NoResults";
+import mock from "./mock.json";
 const ArtistDetail = lazy(() => import("./components/artist/ArtistDetail"));
 
 function App() {
   const [query, setQuery] = useState("");
   const [selectedArtist, setSelectedArtist] = useState<TArtist | void>();
-  const [loadArtists, { loading, data, error }] = useLazyQuery<{
+  const [loadArtists, { loading }] = useLazyQuery<{
     queryArtists: TArtist[];
   }>(QUERY_ARTISTS, {
     variables: {
       query,
     },
   });
+
+  const data = query === "no results" ? { queryArtists: [] } : mock;
 
   useDocumentTitle(
     `${
@@ -37,6 +40,9 @@ function App() {
   }, [query, loadArtists]);
 
   const renderApp = useCallback(() => {
+    const error =
+      query === "error" ? { message: "You did this to me" } : undefined;
+
     if (!query) return <Initial />;
     if (loading) return <Loading />;
     if (error) return <Error message={error.message} />;
@@ -58,7 +64,7 @@ function App() {
       );
 
     return <NoResults query={query} />;
-  }, [query, loading, error, selectedArtist, data?.queryArtists]);
+  }, [query, loading, selectedArtist, data?.queryArtists]);
 
   return (
     <Layout

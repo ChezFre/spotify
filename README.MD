@@ -1,0 +1,2 @@
+- Trigger no results by searching for `no results`
+- Trigger an error by searching for `error`
