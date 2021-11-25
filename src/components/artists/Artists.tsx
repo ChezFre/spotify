@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { TArtist } from "../../types/artist";
 import Artist from "../artist/Artist";
 import * as styled from "./Artists.styled";
