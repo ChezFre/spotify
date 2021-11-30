@@ -39,6 +39,11 @@ function App() {
     }
   }, [query, loadArtists]);
 
+  const handleSearch = (value: string) => {
+    setSelectedArtist();
+    setQuery(value);
+  };
+
   const renderApp = useCallback(() => {
     const error =
       query === "error" ? { message: "You did this to me" } : undefined;
@@ -70,7 +75,7 @@ function App() {
     <Layout
       onBackClick={() => setSelectedArtist()}
       backEnabled={!!selectedArtist}
-      handleSearch={setQuery}
+      handleSearch={handleSearch}
     >
       <Suspense fallback={<div />}>{renderApp()}</Suspense>
     </Layout>
